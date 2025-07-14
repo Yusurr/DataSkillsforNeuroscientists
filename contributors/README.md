@@ -2,15 +2,12 @@
 
 1) Padraig Gleeson
 2) Anji Suri
-2a) Aamina Janmohamed
-2b) Sindhu Jadhav
-2c) bahar mortazavizadeh
-3) Yusur Kassem
-3a) Maria Macadrai
-3b) Sophia Kim
-4) 
-5)
-6)Adrienne Chen 
-7)
-8)Maria macadrai
-9) 
+3) Aamina Janmohamed
+4) Sindhu Jadhav
+5) bahar mortazavizadeh
+6) Yusur Kassem
+7) Maria Macadrai
+8) Sophia Kim
+9) Adrienne Chen 
+10) Maria macadrai
+11) 
