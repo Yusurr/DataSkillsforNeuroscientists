@@ -1,7 +1,8 @@
 ## The following people have contributed to this repository
 
 1) Padraig Gleeson
-2) Aamina Janmohamed
+2) Anji Suri
+2a) Aamina Janmohamed
 3)
 4) 
 5)
