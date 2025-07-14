@@ -10,7 +10,7 @@
 3b) Sophia Kim
 4) 
 5)
-6)
+6)Adrienne Chen 
 7)
 8)
 9) 
