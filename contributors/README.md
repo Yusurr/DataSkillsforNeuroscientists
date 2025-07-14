@@ -7,6 +7,7 @@
 2c) bahar mortazavizadeh
 3) Yusur Kassem
 3a) Maria Macadrai
+3b) Sophia Kim
 4) 
 5)
 6)
