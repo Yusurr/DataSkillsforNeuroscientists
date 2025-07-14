@@ -1,8 +1,10 @@
 ## The following people have contributed to this repository
 
 1) Padraig Gleeson
-2) Yusur Kassem
-3)
+=======
+2) Anji Suri
+2a) Aamina Janmohamed
+3) Yusur Kassem
 4) 
 5)
 6)
