@@ -15,6 +15,7 @@ python LoadCSVData.py -nogui
 python LoadMatData.py -nogui
 
 # Regenerate the NWB file
+python WriteMetadata.py
 python CreateNWB.py
 
 echo "Finished running tests"

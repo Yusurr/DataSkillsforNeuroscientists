@@ -4,52 +4,50 @@ from dateutil.tz import tzlocal
 import pynwb
 import platform
 import hdmf
-
 from LoadMatData import load_mat_file
 
-start_time = datetime.now(tz=tzlocal())
+from WriteMetadata import metadata
+
+session_start_time = datetime.now(tz=tzlocal())
 create_date = datetime.now(tz=tzlocal())
 
 
 hdmf_ver = "v%s" % hdmf.__version__
 
-paper_title = "Multidimensional population activity in an electrically coupled inhibitory circuit in the cerebellar cortex"
-authors = ["Harsha Gurnani", "R. Angus Silver"]
-main_experimenter = "Harsha Gurnani"
+original_experiment_id = "FL90__180316_15_20_48"
+mat_file = f"../data/{original_experiment_id}.mat"
 
-ref = "GurnaniSilver2021"
-
-info = (
+nwb_file_info = (
     "NWB file based on data from %s, created with pynwb v%s (hdmf %s), Python v%s"
     % (
-        paper_title,
+        metadata["paper_title"],
         pynwb.__version__,
         hdmf_ver,
         platform.python_version(),
     )
 )
+
 nwbfile = pynwb.NWBFile(
-    ref,
-    "NWB123",
-    start_time,
+    session_description=metadata["reference"],
+    identifier=original_experiment_id,
+    session_start_time=session_start_time,
     file_create_date=create_date,
-    notes=info,
-    experimenter=main_experimenter,
-    experiment_description=(
-        "This dataset was used in the study “Multidimensional population activity in an electrically coupled inhibitory circuit in the cerebellar cortex” by Gurnani and Silver in Neuron, 2021. It includes pre-processed two-photon imaging data and behavioural data from head-fixed awake mice exhibiting spontaneous whisking and locomotion on a cylindrical wheel."
-    ),
-    institution="University College London",
-    lab="Silver Lab",
+    notes=nwb_file_info,
+    experimenter=metadata["experimenter"],
+    experiment_description=metadata["experiment_description"],
+    institution=metadata["institution"],
+    lab=metadata["lab"],
 )
 
-mat_file = "../data/FL90__180316_15_20_48.mat"
 # Load the .mat file
-neuron_df_f_data = load_mat_file(mat_file)
+neuron_df_f_data, neuron_times, speed, whisker_motion_index, state = load_mat_file(
+    mat_file
+)
 
 
 for i in range(len(neuron_df_f_data)):
     cell_id = i
-    print("Adding cell data %i" % cell_id)
+    print("Adding neuron data %i" % cell_id)
     data = neuron_df_f_data[cell_id]
 
     # TODO: Not correct units!!!
@@ -61,10 +59,10 @@ for i in range(len(neuron_df_f_data)):
 
 nwb_file_name = "Gurnani2021.nwb"
 
-print("Saving NWB file: %s" % nwbfile)
+print("Saving NWB file: \n%s" % nwbfile)
 io = pynwb.NWBHDF5IO(nwb_file_name, mode="w")
 
-print("Written: %s" % info)
+print("Written: %s" % nwb_file_name)
 
 io.write(nwbfile)
 io.close()
