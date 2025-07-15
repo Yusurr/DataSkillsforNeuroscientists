@@ -5,14 +5,13 @@ import sys
 import mat73
 
 
-
 def load_mat_file(mat_file):
     """
     Load a MATLAB .mat file using mat73.
-    
+
     Parameters:
     mat_file (str): Path to the .mat file.
-    
+
     Returns:
     dict: Dictionary containing the loaded data.
     """
@@ -29,7 +28,6 @@ def load_mat_file(mat_file):
 
 
 if __name__ == "__main__":
-
     mat_file = "../data/FL90__180316_15_20_48.mat"
     # Load the .mat file
 
