@@ -22,21 +22,19 @@ def load_mat_file(mat_file):
     print("Variables in the .mat file:", mat.keys())
 
     neuron_df_f = mat["allData"]["neurons"]["f"].T
-    print(f"Neuron data (shape: {neuron_df_f.shape}): {neuron_df_f}")
+    print(f"Neuron data (shape: {neuron_df_f.shape})")
 
     neuron_times = mat["allData"]["neurons"]["time"].T
-    print(f"Neuron times data (shape: {neuron_times.shape}): {neuron_times}")
+    print(f"Neuron times data (shape: {neuron_times.shape})")
 
     speed = mat["allData"]["behaviour"]["speed"].T
-    print(f"Speed data (shape: {speed.shape}): {speed}")
+    print(f"Speed data (shape: {speed.shape})")
 
     whisker_motion_index = mat["allData"]["behaviour"]["whiskerMI"].T
-    print(
-        f"Whisker motion index data (shape: {whisker_motion_index.shape}): {whisker_motion_index}"
-    )
+    print(f"Whisker motion index data (shape: {whisker_motion_index.shape})")
 
     state = mat["allData"]["behaviour"]["state"].T
-    print(f"State data (shape: {state.shape}): {state}")
+    print(f"State data (shape: {state.shape})")
 
     return neuron_df_f, neuron_times, speed, whisker_motion_index, state
 
