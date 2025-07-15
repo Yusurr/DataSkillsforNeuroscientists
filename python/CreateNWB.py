@@ -36,14 +36,13 @@ nwbfile = pynwb.NWBFile(
 
 mat_file = "../data/FL90__180316_15_20_48.mat"
 # Load the .mat file
-mat = load_mat_file(mat_file)
+neuron_df_f_data = load_mat_file(mat_file)
 
-neuron_fluorescence_data = mat["allData"]["neurons"]["f"].T
 
-for i in range(len(neuron_fluorescence_data)):
+for i in range(len(neuron_df_f_data)):
     cell_id = i
     print('Adding cell data %i'%cell_id)
-    data = neuron_fluorescence_data[cell_id]
+    data = neuron_df_f_data[cell_id]
     
     # TODO: Not correct units!!!
     timestamps = [t for t in range(len(data))]
