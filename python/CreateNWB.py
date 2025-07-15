@@ -44,14 +44,18 @@ neuron_df_f_data, neuron_times, speed, whisker_motion_index, state = load_mat_fi
     mat_file
 )
 
-recorded_data = {"Wheel speed": speed}
+recorded_data = {
+    "Wheel speed": speed,
+    "Whisker Motion Index": whisker_motion_index,
+    "State": state,
+}
 
 for key, value in recorded_data.items():
     print(f"Adding recorded data: {key} with shape {value.shape}")
     ts = pynwb.TimeSeries(
         name=key, data=value[1], unit="??", timestamps=value[0] / 1000
     )
-    # nwbfile.add_acquisition(ts)
+    nwbfile.add_acquisition(ts)
 
 
 for i in range(len(neuron_df_f_data)):
@@ -59,14 +63,13 @@ for i in range(len(neuron_df_f_data)):
     print("Adding neuron data %i" % neuron_id)
     data = neuron_df_f_data[i]
 
-    # TODO: Not correct units!!!
     timestamps = [t for t in neuron_times[i] / 1000]  # Convert to seconds
 
     ts = pynwb.TimeSeries(
         "Neuron %i fluorescence" % neuron_id, data, "seconds", timestamps=timestamps
     )
 
-    # nwbfile.add_acquisition(ts)
+    nwbfile.add_acquisition(ts)
 
 nwb_file_name = "Gurnani2021.nwb"
 
