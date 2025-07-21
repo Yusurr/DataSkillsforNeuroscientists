@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import sys
+from os.path import isfile
 
 # Package for importing MATLAB mat v7.3 files
 import mat73
@@ -16,6 +17,10 @@ def load_mat_file(mat_file):
     dict: Dictionary containing the loaded data.
     """
     print(f"Loading data from: {mat_file}")
+
+    if not isfile(mat_file):
+        print(f"File {mat_file} does not exist.")
+        raise FileNotFoundError(f"File {mat_file} does not exist.")
 
     mat = mat73.loadmat(mat_file)
     # Print the keys to see what's inside
@@ -46,6 +51,7 @@ def load_mat_file(mat_file):
         puff_events = mat["allEvents"]["puff_whisker"].T
         print(f"Puff event data (shape: {puff_events.shape})")
     else:
+        print("No puff events found in the data.")
         puff_events = []
 
     return (
@@ -60,10 +66,13 @@ def load_mat_file(mat_file):
 
 
 if __name__ == "__main__":
-    mat_file = "../data/HG24__190726_15_44_45.mat"  # Example file, change as needed
-    mat_file = "../data/FL90__180316_15_20_48.mat"
-    # Load the .mat file
+    if len(sys.argv) > 1 and sys.argv[1].endswith(".mat"):
+        mat_file = sys.argv[1]
+        print(f"Using provided .mat file: {mat_file}")
+    else:
+        mat_file = "../data/FL90__180316_15_20_48.mat"  # Example file, change as needed
 
+    # Load the .mat file
     (
         neuron_df_f_data,
         neuron_times,
