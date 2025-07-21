@@ -2,6 +2,8 @@
 
 A simple python script to load data from a CSV file and plot it using matplotlib.
 
+Note: the CSV file contains a subset of the data exported from the MATLAB .mat file used in the other scripts.
+
 """
 
 import numpy as np

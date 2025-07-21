@@ -18,4 +18,8 @@ python LoadMatData.py -nogui
 python WriteMetadata.py
 python CreateNWB.py
 
+# Test running the notebook
+cd ../notebooks
+pytest --nbmake GurnaniData.ipynb  # requires pip install nbmake 
+
 echo "Finished running tests"
