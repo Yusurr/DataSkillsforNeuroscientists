@@ -74,7 +74,7 @@ if __name__ == "__main__":
 
     # Load the .mat file
     (
-        neuron_df_f_data,
+        neuron_df_f,
         neuron_times,
         speed,
         whisker_motion_index,
@@ -83,7 +83,7 @@ if __name__ == "__main__":
         puff_events,
     ) = load_mat_file(mat_file)
 
-    plt.imshow(neuron_df_f_data, aspect="auto", cmap="viridis")
+    plt.imshow(neuron_df_f, aspect="auto", cmap="viridis")
     plt.colorbar()
     plt.xlabel("Time point")
     plt.ylabel("Neuron #")
@@ -95,10 +95,10 @@ if __name__ == "__main__":
     plt.xlabel("Time (s)")
     plt.ylabel("dF/F")
 
-    for index in range(len(neuron_df_f_data)):
+    for index in range(len(neuron_df_f)):
         plt.plot(
             [t / 1000 for t in neuron_times[index]],
-            neuron_df_f_data[index] - index,
+            neuron_df_f[index] - index,
             color="k",
             linewidth=0.5,
         )
