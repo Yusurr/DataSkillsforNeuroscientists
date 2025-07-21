@@ -40,9 +40,15 @@ nwbfile = pynwb.NWBFile(
 )
 
 # Load the .mat file
-neuron_df_f_data, neuron_times, speed, whisker_motion_index, state = load_mat_file(
-    mat_file
-)
+(
+    neuron_df_f_data,
+    neuron_times,
+    speed,
+    whisker_motion_index,
+    state,
+    pca_dff,
+    puff_events,
+) = load_mat_file(mat_file)
 
 recorded_data = {
     "Wheel speed": speed,
