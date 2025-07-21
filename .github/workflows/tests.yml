@@ -38,7 +38,7 @@ jobs:
     - name: Test running the notebook
       run: |
         pip install nbmake  
-        cd notebook  
+        cd notebooks  
         pytest --nbmake GurnaniData.ipynb 
 
     - name: Test creating NWB file
